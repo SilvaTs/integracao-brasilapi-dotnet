@@ -2,7 +2,7 @@
 
 namespace IntegracaoBrasilAPI.Models
 {
-    public class Adress
+    public class Address
     {
         [JsonProperty("cep")]
         public string? Cep { get; set; }

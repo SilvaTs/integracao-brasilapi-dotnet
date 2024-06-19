@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using IntegracaoBrasilAPI.interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace IntegracaoBrasilAPI.Controllers
 {
@@ -6,5 +7,12 @@ namespace IntegracaoBrasilAPI.Controllers
     [Route("api/v1[controller]")]
     public class AddressController : ControllerBase
     {
+        private readonly IAddressService _addressService;
+
+        public AddressController(IAddressService addressService)
+        {
+            _addressService = addressService;
+        }
+
     }
 }
