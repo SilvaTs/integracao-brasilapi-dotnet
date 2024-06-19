@@ -34,14 +34,54 @@ namespace IntegracaoBrasilAPI.Rest
 
         }
 
-        public Task<GenericResponse<List<Bank>>> SearchAllBanks()
+        public async Task<GenericResponse<List<Bank>>> SearchAllBanks()
         {
-            throw new NotImplementedException();
+            var request = new HttpRequestMessage(HttpMethod.Get, $"https://brasilapi.com.br/api/banks/v1");
+
+            var genericResponse = new GenericResponse<List<Bank>>();
+            using (var client = new HttpClient())
+            {
+                var responseBrazilApi = await client.SendAsync(request);
+                var contentResponse = await responseBrazilApi.Content.ReadAsStringAsync();
+                var responseBanck = JsonSerializer.Deserialize<List<Bank>>(contentResponse);
+
+                if (responseBrazilApi.IsSuccessStatusCode)
+                {
+                    genericResponse.StatusCode = responseBrazilApi.StatusCode;
+                    genericResponse.ResponseData = responseBanck;
+                }
+                else
+                {
+                    genericResponse.StatusCode = responseBrazilApi.StatusCode;
+                    genericResponse.ResponseError = JsonSerializer.Deserialize<ExpandoObject>(contentResponse);
+                }
+            }
+            return genericResponse;
         }
 
-        public Task<GenericResponse<Bank>> SearchBank(string bankCode)
+        public async Task<GenericResponse<Bank>> SearchBank(string bankCode)
         {
-            throw new NotImplementedException();
+            var request = new HttpRequestMessage(HttpMethod.Get, $"https://brasilapi.com.br/api/banks/v1/{bankCode}");
+
+            var genericResponse = new GenericResponse<Bank>();
+            using (var client = new HttpClient())
+            {
+                var responseBrasilApi = await client.SendAsync(request);
+                var contentResponse = await responseBrasilApi.Content.ReadAsStringAsync();
+                var responseBanck = JsonSerializer.Deserialize<Bank>(contentResponse);
+
+                if (responseBrasilApi.IsSuccessStatusCode)
+                {
+                    genericResponse.StatusCode = responseBrasilApi.StatusCode;
+                    genericResponse.ResponseData = responseBanck;
+                }
+                else
+                {
+                    genericResponse.StatusCode = responseBrasilApi.StatusCode;
+                    genericResponse.ResponseError = JsonSerializer.Deserialize<ExpandoObject>(contentResponse);
+                }
+            }
+            return genericResponse;
         }
     }
 }

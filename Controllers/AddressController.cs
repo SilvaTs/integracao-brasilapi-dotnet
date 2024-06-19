@@ -5,7 +5,7 @@ using System.Net;
 namespace IntegracaoBrasilAPI.Controllers
 {
     [ApiController]
-    [Route("api/v1/Endereco")]
+    [Route("api/v1/[controller]")]
     public class AddressController : ControllerBase
     {
         private readonly IAddressService _addressService;
@@ -15,7 +15,7 @@ namespace IntegracaoBrasilAPI.Controllers
             _addressService = addressService;
         }
 
-        [HttpGet("busca/{zipCode}")]
+        [HttpGet("search/{zipCode}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

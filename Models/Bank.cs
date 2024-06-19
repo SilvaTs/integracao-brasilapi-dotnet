@@ -1,19 +1,20 @@
 ﻿using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace IntegracaoBrasilAPI.Models
 {
     public class Bank
     {
-        [JsonProperty("ispb")]
+        [JsonPropertyName("ispb")]
         public string? Ispb { get; set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string? Name { get; set; }
 
-        [JsonProperty("code")]
+        [JsonPropertyName("code")]
         public int? Code { get; set; }
 
-        [JsonProperty("fullName")]
+        [JsonPropertyName("fullName")]
         public string? FullName { get; set; }
     }
 }

@@ -13,10 +13,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<IAddressService, BrazilService>();
-//builder.Services.AddSingleton<IBankService, BankService>();
+builder.Services.AddSingleton<IBankService, BankService>();
 builder.Services.AddSingleton<IBrazilApi, BrazilApiRest>();
 
 builder.Services.AddAutoMapper(typeof(AddressProfiles));
+builder.Services.AddAutoMapper(typeof(BankProfiles));
 
 var app = builder.Build();
 
