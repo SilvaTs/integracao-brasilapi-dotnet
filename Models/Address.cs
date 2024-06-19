@@ -1,25 +1,26 @@
 ﻿using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace IntegracaoBrasilAPI.Models
 {
     public class Address
     {
-        [JsonProperty("cep")]
+        [JsonPropertyName("cep")]
         public string? Cep { get; set; }
 
-        [JsonProperty("state")]
+        [JsonPropertyName("state")]
         public string? State { get; set; }
 
-        [JsonProperty("city")]
+        [JsonPropertyName("city")]
         public string? City { get; set; }
 
-        [JsonProperty("neighborhood")]
+        [JsonPropertyName("neighborhood")]
         public string? Neighborhood { get; set; }
 
-        [JsonProperty("street")]
+        [JsonPropertyName("street")]
         public string? Street { get; set; }
 
-        [JsonProperty("service")]
+        [JsonPropertyName("service")]
         public string? Service { get; set; }
     }
 }
